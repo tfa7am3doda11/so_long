@@ -1,0 +1,91 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   draw.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rben-ais <rben-ais@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/07 11:30:49 by rben-ais          #+#    #+#             */
+/*   Updated: 2025/02/10 14:02:24 by rben-ais         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "so_long.h"
+
+int	key_pressed(int pressed, t_data *data)
+{
+	if (pressed == SPACE)
+		data->space_held = 1;
+	if (pressed == LEFT)
+		mv_left(data);
+	else if (pressed == RIGHT)
+		mv_right(data);
+	else if (pressed == UP)
+		mv_up(data);
+	else if (pressed == DOWN)
+		mv_down(data);
+	else if (pressed == ESC || pressed == CLOSE_W)
+		exit(0);
+	else
+		write(1, "Invalid Key Pressed!!\n", 23);
+	return (0);
+}
+
+void	init(t_data *data)
+{
+	data->mlx = mlx_init();
+	data->window = mlx_new_window(data->mlx, data->width_len * 32,
+			data->lines_len * 32, "TOMB OF THE MASK");
+	init_image(data);
+	draw_map(data);
+	mlx_key_hook(data->window, key_pressed, data);
+	mlx_hook(data->window, 17, 0, close_window, data);
+	mlx_loop(data->mlx);
+}
+
+void	init_image(t_data *data)
+{
+	data->floor = "./textures/floor.xpm";
+	data->player = "./textures/player.xpm";
+	data->door = "./textures/Exit.xpm";
+	data->wall = "./textures/wall.xpm";
+	data->collectible = "./textures/collectible.xpm";
+	data->image_floor = mlx_xpm_file_to_image(data->mlx, data->floor,
+			&data->image_width, &data->image_height);
+	data->image_player = mlx_xpm_file_to_image(data->mlx, data->player,
+			&data->image_width, &data->image_height);
+	data->image_door = mlx_xpm_file_to_image(data->mlx, data->door,
+			&data->image_width, &data->image_height);
+	data->image_wall = mlx_xpm_file_to_image(data->mlx, data->wall,
+			&data->image_width, &data->image_height);
+	data->image_collectible = mlx_xpm_file_to_image(data->mlx,
+			data->collectible,
+			&data->image_width, &data->image_height);
+}
+
+void	draw_map(t_data *data)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (data->map[j])
+	{
+		while (data->map[j][i])
+		{
+			draw_map2(data, j, i);
+			i++;
+		}
+		i = 0;
+		j++;
+	}
+}
+
+void	player_on_door(t_data *data)
+{
+	mlx_put_image_to_window(data->mlx, data->window, data->image_door, data->e_x
+		* 32, (data->e_y) * 32);
+	mlx_put_image_to_window(data->mlx, data->window, data->image_player,
+		data->e_x * 32, (data->e_y) * 32);
+}
