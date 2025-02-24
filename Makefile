@@ -1,7 +1,7 @@
 SRC = ./mandatory/so_long.c ./mandatory/so_long_utils.c ./mandatory/so_long_utils2.c ./mandatory/draw.c ./mandatory/movements.c
-SRCBonus = ./bonus/so_long_bonus.c ./bonus/so_long_utils_bonus.c ./bonus/so_long_utils2_bonus.c ./bonus/draw_bonus.c ./bonus/movements_bonus.c ./bonus/enemy_bonus.c
+SRCBonus = ./bonus/so_long_bonus.c ./bonus/so_long_utils_bonus.c ./bonus/so_long_utils2_bonus.c ./bonus/draw_bonus.c ./bonus/movements_bonus.c ./bonus/enemy.c
 NAME = so_long
-CC = gcc
+CC = cc
 CFLAGS = -Wall -Wextra -Werror
 RM = rm -rf
 libraries = ./ft_printf/libftprintf.a ./get_next_line/libget_next_line.a ./libft/libft.a
@@ -32,7 +32,7 @@ clean: $(SUBDIRS)
 
 bonus: libs $(SRCBonus)
 	@echo "\033[1;32mWork is done !\033[0m"
-	@echo "\033[104mare you ready to play the best game in the whole universe ?\033[0m \033[1;31mAnd avoid the fearsome KILLER , TIAMAT and The elementalist\033[0m ?"
+	@echo "\033[104mBonus is\033[0m \033[1;32mready !!!\033[0m ?"
 	$(CC) $(SRCBonus) $(CFLAGS) $(libraries) -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 
 fclean:

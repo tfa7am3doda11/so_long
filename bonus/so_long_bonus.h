@@ -6,7 +6,7 @@
 /*   By: rben-ais <rben-ais@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 21:03:25 by rben-ais          #+#    #+#             */
-/*   Updated: 2025/02/12 15:46:26 by rben-ais         ###   ########.fr       */
+/*   Updated: 2025/02/24 13:44:32 by rben-ais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ typedef struct s_map
 	int		p_y;
 	int		e_x;
 	int		e_y;
-	int		B_x;
-	int		B_y;
+	int		b_x;
+	int		b_y;
 	int		prize;
 	int		space_held;
 	int		bat_frame;
@@ -60,39 +60,38 @@ typedef struct s_map
 	char	*collectible;
 	char	*door;
 	char	*wall;
-	char	*BAT1;
-	char	*BAT2;
+	char	*bat1;
+	char	*bat2;
 	void	*image_floor;
 	void	*image_wall;
 	void	*image_door;
 	void	*image_player;
 	void	*image_collectible;
-	void	*image_BAT1;
-	void	*image_BAT2;
+	void	*image_bat1;
+	void	*image_bat2;
 
 }			t_data;
 
 int			safe(int x, int y, t_data *data, char **visited);
 void		create_lines(char **big_line, char **line, int fd);
+void		image_move(t_data *data, int x, int y);
 void		free_things(char **visited, t_data *data);
 void		digit_check(t_data *data, int j, int i);
-void		image_move(t_data *data, int x, int y);
 void		ber_check(char *str, char *format);
 void		draw_map2(t_data *data, int j, int i);
 void		player_on_door(t_data *data);
 void		check_corners(t_data *data);
+void		width_checker(t_data *data);
 int			close_window(t_data *data);
 void		init_image(t_data *data);
+void		animation(t_data *data);
 void		draw_map(t_data *data);
 void		mv_right(t_data *data);
 void		mv_left(t_data *data);
 void		mv_down(t_data *data);
-void		width_checker(t_data *data);
 void		mv_up(t_data *data);
 int			path(t_data *data);
 void		init(t_data *data);
-void		mv_bat(t_data *data);
-int			check_collision(t_data *data);
-void		update_bat_position(t_data *data);
+int			update_animations(t_data *data);
 
 #endif

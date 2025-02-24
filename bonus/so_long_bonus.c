@@ -6,7 +6,7 @@
 /*   By: rben-ais <rben-ais@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 21:03:16 by rben-ais          #+#    #+#             */
-/*   Updated: 2025/02/12 15:44:50 by rben-ais         ###   ########.fr       */
+/*   Updated: 2025/02/24 20:14:33 by rben-ais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	map_checker(t_data *data)
 	}
 	if (data->c_count == 0 || data->p_count != 1 || data->e_count != 1)
 	{
-		perror("Collectables or player or exit is missing!");
+		ft_printf("Collectables or player or exit is missing!");
 		exit(1);
 	}
 	check_corners(data);
@@ -55,7 +55,7 @@ void	data_reader(t_data *data, int fd)
 		{
 			if ((int)ft_strlen(line) < data->width_len)
 			{
-				perror("too much new lines!\n");
+				ft_printf("too much new lines!\n");
 				exit(1);
 			}
 		}
@@ -114,8 +114,8 @@ int	safe(int x, int y, t_data *data, char **visited)
 
 int	main(int ac, char **av)
 {
-    t_data	*data;
-    int		fd;
+	t_data	*data;
+	int		fd;
 
     data = (t_data *)malloc(sizeof(t_data));
     if (!data)
@@ -128,21 +128,15 @@ int	main(int ac, char **av)
     if (fd == -1)
     {
         free(data);
-        perror("Error\n");
+        ft_printf("Error\n");
         exit(1);
     }
     data_reader(data, fd);
     map_checker(data);
     if (path(data) == 0)
     {
-        perror("Error\nInvalid Path!\n");
+        ft_printf("Error\nInvalid Path!\n");
         exit(0);
     }
     init(data);
-    while (1)
-    {
-        update_bat_position(data);
-        draw_map(data); // Redraw the map to update bat position and animation
-        usleep(100000); // Adjust the sleep time for bat speed
-    }
 }

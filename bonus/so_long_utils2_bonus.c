@@ -6,7 +6,7 @@
 /*   By: rben-ais <rben-ais@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 21:03:46 by rben-ais          #+#    #+#             */
-/*   Updated: 2025/02/12 15:33:29 by rben-ais         ###   ########.fr       */
+/*   Updated: 2025/02/24 19:59:16 by rben-ais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	width_checker(t_data *data)
 	{
 		if (data->width_len != (int)ft_strlen(data->map[i]))
 		{
-			perror("Map Width mkherbe9\n");
+			ft_printf("Map Width mkherbe9\n");
 			exit(1);
 		}
 		i++;
@@ -34,13 +34,18 @@ void	create_lines(char **big_line, char **line, int fd)
 	*line = get_next_line(fd);
 	if (!*line)
 	{
-		perror("Error\nempty file!\n");
+		ft_printf("Error\nempty file!\n");
 		exit(1);
 	}
 }
 
 void	image_move(t_data *data, int x, int y)
 {
+	if(data->p_x + x == data->b_x && data->p_y + y == data->b_y)
+	{
+		printf("\033[1;31mGAME OVER\033[0m\n");
+		exit(1);
+	}
 	mlx_put_image_to_window(data->mlx, data->window, data->image_floor,
 		(data->p_x + x) * 32, (data->p_y + y) * 32);
 	mlx_put_image_to_window(data->mlx, data->window, data->image_player,
@@ -49,6 +54,4 @@ void	image_move(t_data *data, int x, int y)
 		(data->p_x) * 32, (data->p_y) * 32);
 	mlx_put_image_to_window(data->mlx, data->window, data->image_door,
 		data->e_x * 32, data->e_y * 32);
-	mlx_put_image_to_window(data->mlx, data->window, data->image_BAT1,
-		data->B_x * 32, data->B_y * 32);
 }

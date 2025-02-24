@@ -6,7 +6,7 @@
 /*   By: rben-ais <rben-ais@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 21:03:37 by rben-ais          #+#    #+#             */
-/*   Updated: 2025/02/12 15:31:56 by rben-ais         ###   ########.fr       */
+/*   Updated: 2025/02/24 19:57:53 by rben-ais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	check_corners(t_data *data)
 					- 1][i] == '1') || !(data->map[j][0] == '1')
 				|| !(data->map[j][data->width_len - 1] == '1'))
 			{
-				perror("Map corners machi homa hadok\n");
+				ft_printf("Map corners machi homa hadok\n");
 				exit(1);
 			}
 			i++;
@@ -96,8 +96,8 @@ void	digit_check(t_data *data, int j, int i)
 		data->c_count++;
 	else if (data->map[j][i] == 'B')
 	{
-		data->B_x = i;
-		data->B_y = j;
+		data->b_x = i;
+		data->b_y = j;
 	}
 }
 

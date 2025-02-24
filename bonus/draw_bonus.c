@@ -6,7 +6,7 @@
 /*   By: rben-ais <rben-ais@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 21:02:55 by rben-ais          #+#    #+#             */
-/*   Updated: 2025/02/12 15:48:42 by rben-ais         ###   ########.fr       */
+/*   Updated: 2025/02/24 15:37:24 by rben-ais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	init(t_data *data)
 	draw_map(data);
 	mlx_key_hook(data->window, key_pressed, data);
 	mlx_hook(data->window, 17, 0, close_window, data);
+	mlx_loop_hook(data->mlx, update_animations, data);
 	mlx_loop(data->mlx);
 }
 
@@ -49,8 +50,8 @@ void	init_image(t_data *data)
 	data->player = "./textures/player.xpm";
 	data->door = "./textures/Exit.xpm";
 	data->wall = "./textures/wall.xpm";
-	data->BAT1 = "./textures/bat1_32.xpm";
-	data->BAT2 = "./textures/bat2_32.xpm";
+	data->bat1 = "./textures/bat1_32.xpm";
+	data->bat2 = "./textures/bat2_32.xpm";
 	data->collectible = "./textures/collectible.xpm";
 	data->image_floor = mlx_xpm_file_to_image(data->mlx, data->floor,
 			&data->image_width, &data->image_height);
@@ -60,9 +61,9 @@ void	init_image(t_data *data)
 			&data->image_width, &data->image_height);
 	data->image_wall = mlx_xpm_file_to_image(data->mlx, data->wall,
 			&data->image_width, &data->image_height);
-	data->image_BAT1 = mlx_xpm_file_to_image(data->mlx, data->BAT1,
+	data->image_bat1 = mlx_xpm_file_to_image(data->mlx, data->bat1,
 			&data->image_width, &data->image_height);
-	data->image_BAT2 = mlx_xpm_file_to_image(data->mlx, data->BAT2,
+	data->image_bat2 = mlx_xpm_file_to_image(data->mlx, data->bat2,
 			&data->image_width, &data->image_height);
 	data->image_collectible = mlx_xpm_file_to_image(data->mlx,
 			data->collectible,
