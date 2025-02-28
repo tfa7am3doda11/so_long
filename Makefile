@@ -1,5 +1,5 @@
 SRC = ./mandatory/so_long.c ./mandatory/so_long_utils.c ./mandatory/so_long_utils2.c ./mandatory/draw.c ./mandatory/movements.c
-SRCBonus = ./bonus/so_long_bonus.c ./bonus/so_long_utils_bonus.c ./bonus/so_long_utils2_bonus.c ./bonus/draw_bonus.c ./bonus/movements_bonus.c ./bonus/enemy.c
+SRCBonus = ./bonus/so_long_bonus.c ./bonus/so_long_utils_bonus.c ./bonus/so_long_utils2_bonus.c ./bonus/draw_bonus.c ./bonus/movements_bonus.c ./bonus/enemy_bonus.c
 NAME = so_long
 CC = cc
 CFLAGS = -Wall -Wextra -Werror

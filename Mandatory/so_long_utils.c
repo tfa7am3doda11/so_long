@@ -6,7 +6,7 @@
 /*   By: rben-ais <rben-ais@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 11:31:09 by rben-ais          #+#    #+#             */
-/*   Updated: 2025/02/20 02:53:21 by rben-ais         ###   ########.fr       */
+/*   Updated: 2025/02/26 16:09:40 by rben-ais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	ber_check(char *str, char *format)
 	}
 	if (len != 0)
 	{
-		ft_printf("wrong file format!\nError\n");
+		ft_printf("Error\nwrong file format!\n");
 		exit(1);
 	}
 }

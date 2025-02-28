@@ -6,7 +6,7 @@
 /*   By: rben-ais <rben-ais@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 21:03:16 by rben-ais          #+#    #+#             */
-/*   Updated: 2025/02/24 20:14:33 by rben-ais         ###   ########.fr       */
+/*   Updated: 2025/02/25 09:20:23 by rben-ais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,26 +117,26 @@ int	main(int ac, char **av)
 	t_data	*data;
 	int		fd;
 
-    data = (t_data *)malloc(sizeof(t_data));
-    if (!data)
-        exit(0);
-    ft_memset(data, 0, sizeof(t_data));
-    if (ac != 2)
-        exit(ft_printf("Error\nnot enough arguments\n") * 0);
-    ber_check(av[1], ".ber");
-    fd = open(av[1], O_RDONLY);
-    if (fd == -1)
-    {
-        free(data);
-        ft_printf("Error\n");
-        exit(1);
-    }
-    data_reader(data, fd);
-    map_checker(data);
-    if (path(data) == 0)
-    {
-        ft_printf("Error\nInvalid Path!\n");
-        exit(0);
-    }
-    init(data);
+	data = (t_data *)malloc(sizeof(t_data));
+	if (!data)
+		exit(0);
+	ft_memset(data, 0, sizeof(t_data));
+	if (ac != 2)
+		exit(ft_printf("Error\nnot enough arguments\n") * 0);
+	ber_check(av[1], ".ber");
+	fd = open(av[1], O_RDONLY);
+	if (fd == -1)
+	{
+		free(data);
+		ft_printf("Error\n");
+		exit(1);
+	}
+	data_reader(data, fd);
+	map_checker(data);
+	if (path(data) == 0)
+	{
+		ft_printf("Error\nInvalid Path!\n");
+		exit(0);
+	}
+	init(data);
 }

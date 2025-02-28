@@ -6,7 +6,7 @@
 /*   By: rben-ais <rben-ais@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 11:31:15 by rben-ais          #+#    #+#             */
-/*   Updated: 2025/02/20 02:53:31 by rben-ais         ###   ########.fr       */
+/*   Updated: 2025/02/26 16:23:51 by rben-ais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	create_lines(char **big_line, char **line, int fd)
 {
 	*big_line = ft_calloc(5, 1);
 	*line = get_next_line(fd);
-	if (!*line)
+	if (!*line || !*big_line)
 	{
 		perror("Error\nempty file!\n");
 		exit(1);

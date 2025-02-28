@@ -6,7 +6,7 @@
 /*   By: rben-ais <rben-ais@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 11:31:39 by rben-ais          #+#    #+#             */
-/*   Updated: 2025/02/10 17:31:33 by rben-ais         ###   ########.fr       */
+/*   Updated: 2025/02/26 15:38:30 by rben-ais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,13 +74,13 @@ void		ber_check(char *str, char *format);
 void		draw_map2(t_data *data, int j, int i);
 void		player_on_door(t_data *data);
 void		check_corners(t_data *data);
+void		width_checker(t_data *data);
 int			close_window(t_data *data);
 void		init_image(t_data *data);
 void		draw_map(t_data *data);
 void		mv_right(t_data *data);
 void		mv_left(t_data *data);
 void		mv_down(t_data *data);
-void		width_checker(t_data *data);
 void		mv_up(t_data *data);
 int			path(t_data *data);
 void		init(t_data *data);

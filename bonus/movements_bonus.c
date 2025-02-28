@@ -6,7 +6,7 @@
 /*   By: rben-ais <rben-ais@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 21:03:03 by rben-ais          #+#    #+#             */
-/*   Updated: 2025/02/24 21:56:37 by rben-ais         ###   ########.fr       */
+/*   Updated: 2025/02/27 17:35:36 by rben-ais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,7 @@
 void	mv_up(t_data *data)
 {
 	if (data->map[data->p_y - 1][data->p_x] != '1')
-	{
-		mlx_put_image_to_window(data->mlx, data->window, data->image_wall,10, 10);
-		mlx_string_put(data->mlx, data->window, 10, 10, 0xFFFFFF, ft_itoa(data->steps++));
-	}
+		print_moves(data);
 	while (data->map[data->p_y - 1][data->p_x] != '1')
 	{
 		if (data->map[data->p_y - 1][data->p_x] != '1')
@@ -44,10 +41,7 @@ void	mv_up(t_data *data)
 void	mv_down(t_data *data)
 {
 	if (data->map[data->p_y + 1][data->p_x] != '1')
-	{
-		mlx_put_image_to_window(data->mlx, data->window, data->image_wall,10, 10);
-		mlx_string_put(data->mlx, data->window, 10, 10, 0xFFFFFF, ft_itoa(data->steps++));
-	}
+		print_moves(data);
 	while (data->map[data->p_y + 1][data->p_x] != '1')
 	{
 		if (data->map[data->p_y + 1][data->p_x] != '1')
@@ -73,10 +67,7 @@ void	mv_down(t_data *data)
 void	mv_left(t_data *data)
 {
 	if (data->map[data->p_y][data->p_x - 1] != '1')
-	{
-		mlx_put_image_to_window(data->mlx, data->window, data->image_wall,10, 10);
-		mlx_string_put(data->mlx, data->window, 10, 10, 0xFFFFFF, ft_itoa(data->steps++));
-	}
+		print_moves(data);
 	while (data->map[data->p_y][data->p_x - 1] != '1')
 	{
 		if (data->map[data->p_y][data->p_x - 1] != '1')
@@ -102,10 +93,7 @@ void	mv_left(t_data *data)
 void	mv_right(t_data *data)
 {
 	if (data->map[data->p_y][data->p_x + 1] != '1')
-	{
-		mlx_put_image_to_window(data->mlx, data->window, data->image_wall,10, 10);
-		mlx_string_put(data->mlx, data->window, 10, 10, 0xFFFFFF, ft_itoa(data->steps++));
-	}
+		print_moves(data);
 	while (data->map[data->p_y][data->p_x + 1] != '1')
 	{
 		if (data->map[data->p_y][data->p_x + 1] != '1')
@@ -133,23 +121,24 @@ void	mv_right(t_data *data)
 
 void	draw_map2(t_data *data, int j, int i)
 {
-    if (data->map[j][i] == '1')
-        mlx_put_image_to_window(data->mlx, data->window, data->image_wall, i
-            * 32, j * 32);
-    if (data->map[j][i] == '0' || data->map[j][i] == 'P'
-        || data->map[j][i] == 'E' || data->map[j][i] == 'C' || data->map[j][i] == 'B')
-        mlx_put_image_to_window(data->mlx, data->window, data->image_floor, i
-            * 32, j * 32);
-    if (data->map[j][i] == 'E')
-        mlx_put_image_to_window(data->mlx, data->window, data->image_door, i
-            * 32, j * 32);
-    if (data->map[j][i] == 'C')
-        mlx_put_image_to_window(data->mlx, data->window,
-            data->image_collectible, i * 32, j * 32);
-    if (data->map[j][i] == 'B')
-        mlx_put_image_to_window(data->mlx, data->window,
-            data->image_bat1, i * 32, j * 32);
-    if (data->map[j][i] == 'P')
-        mlx_put_image_to_window(data->mlx, data->window, data->image_player, i
-            * 32, j * 32);
+	if (data->map[j][i] == '1')
+		mlx_put_image_to_window(data->mlx, data->window, data->image_wall, i
+			* 32, j * 32);
+	if (data->map[j][i] == '0' || data->map[j][i] == 'P'
+		|| data->map[j][i] == 'E' || data->map[j][i] == 'C'
+		|| data->map[j][i] == 'B')
+		mlx_put_image_to_window(data->mlx, data->window, data->image_floor, i
+			* 32, j * 32);
+	if (data->map[j][i] == 'E')
+		mlx_put_image_to_window(data->mlx, data->window, data->image_door,
+			i * 32, j * 32);
+	if (data->map[j][i] == 'C')
+		mlx_put_image_to_window(data->mlx, data->window,
+			data->image_collectible, i * 32, j * 32);
+	if (data->map[j][i] == 'B')
+		mlx_put_image_to_window(data->mlx, data->window,
+			data->image_bat1, i * 32, j * 32);
+	if (data->map[j][i] == 'P')
+		mlx_put_image_to_window(data->mlx, data->window, data->image_player,
+			i * 32, j * 32);
 }

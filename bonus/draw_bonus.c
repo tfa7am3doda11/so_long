@@ -6,7 +6,7 @@
 /*   By: rben-ais <rben-ais@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/11 21:02:55 by rben-ais          #+#    #+#             */
-/*   Updated: 2025/02/24 15:37:24 by rben-ais         ###   ########.fr       */
+/*   Updated: 2025/02/25 20:42:25 by rben-ais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	key_pressed(int pressed, t_data *data)
 	else if (pressed == DOWN)
 		mv_down(data);
 	else if (pressed == ESC || pressed == CLOSE_W)
-		exit(0);
+		exit(1);
 	else
 		write(1, "Invalid Key Pressed!!\n", 23);
 	return (0);
@@ -53,22 +53,7 @@ void	init_image(t_data *data)
 	data->bat1 = "./textures/bat1_32.xpm";
 	data->bat2 = "./textures/bat2_32.xpm";
 	data->collectible = "./textures/collectible.xpm";
-	data->image_floor = mlx_xpm_file_to_image(data->mlx, data->floor,
-			&data->image_width, &data->image_height);
-	data->image_player = mlx_xpm_file_to_image(data->mlx, data->player,
-			&data->image_width, &data->image_height);
-	data->image_door = mlx_xpm_file_to_image(data->mlx, data->door,
-			&data->image_width, &data->image_height);
-	data->image_wall = mlx_xpm_file_to_image(data->mlx, data->wall,
-			&data->image_width, &data->image_height);
-	data->image_bat1 = mlx_xpm_file_to_image(data->mlx, data->bat1,
-			&data->image_width, &data->image_height);
-	data->image_bat2 = mlx_xpm_file_to_image(data->mlx, data->bat2,
-			&data->image_width, &data->image_height);
-	data->image_collectible = mlx_xpm_file_to_image(data->mlx,
-			data->collectible,
-			&data->image_width, &data->image_height);
-	data->bat_frame = 0;
+	ft_xpm(data);
 }
 
 void	draw_map(t_data *data)

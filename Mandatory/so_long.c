@@ -6,7 +6,7 @@
 /*   By: rben-ais <rben-ais@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 11:31:24 by rben-ais          #+#    #+#             */
-/*   Updated: 2025/02/20 02:53:13 by rben-ais         ###   ########.fr       */
+/*   Updated: 2025/02/27 16:48:14 by rben-ais         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	data_reader(t_data *data, int fd)
 		{
 			if ((int)ft_strlen(line) < data->width_len)
 			{
-				perror("too much new lines!\n");
+				perror("Error\ntoo much new lines!\n");
 				exit(1);
 			}
 		}
@@ -128,8 +128,7 @@ int	main(int ac, char **av)
 	if (fd == -1)
 	{
 		free(data);
-		perror("Error\n");
-		exit(1);
+		exit(ft_printf("Error\n") * 0 + 1);
 	}
 	data_reader(data, fd);
 	map_checker(data);
@@ -139,4 +138,5 @@ int	main(int ac, char **av)
 		exit(0);
 	}
 	init(data);
+	return (0);
 }
